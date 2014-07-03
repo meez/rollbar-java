@@ -2,6 +2,7 @@ package com.muantech.rollbar.java;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.Map;
 
