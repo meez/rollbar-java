@@ -64,7 +64,11 @@ public class RollbarAppender extends AppenderSkeleton {
     private Map<String, Object> getContext(final LoggingEvent event) {
 
         @SuppressWarnings("unchecked")
-        final Map<String, Object> context = MDC.getContext();
+        Map<String, Object> context = MDC.getContext();
+        // From javadoc for MDC.getContext() - "Get the current thread's MDC as a hashtable. This method is intended to be used internally."
+        if( context==null ) {
+            context = new Hashtable<String, Object>();
+        }
         context.put("LOG_BUFFER", new ArrayList<String>(LOG_BUFFER));
 
         return context;
